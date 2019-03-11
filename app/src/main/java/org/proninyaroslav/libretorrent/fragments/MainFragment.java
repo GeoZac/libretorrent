@@ -659,6 +659,8 @@ public class MainFragment extends Fragment
         categories.add(getString(R.string.spinner_downloading_torrents));
         categories.add(getString(R.string.spinner_downloaded_torrents));
         categories.add(getString(R.string.spinner_downloading_metadata_torrents));
+        categories.add(getString(R.string.torrent_status_paused));
+        categories.add(getString(R.string.torrent_status_stopped));
 
         return categories;
     }
@@ -674,6 +676,10 @@ public class MainFragment extends Fragment
             adapter.setDisplayFilter(new TorrentListAdapter.DisplayFilter(TorrentStateCode.SEEDING));
         else if (filter.equals(getString(R.string.spinner_downloading_metadata_torrents)))
             adapter.setDisplayFilter(new TorrentListAdapter.DisplayFilter(TorrentStateCode.DOWNLOADING_METADATA));
+        else if (filter.equals(getString(R.string.torrent_status_paused)))
+            adapter.setDisplayFilter(new TorrentListAdapter.DisplayFilter(TorrentStateCode.PAUSED));
+        else if (filter.equals(getString(R.string.torrent_status_stopped)))
+            adapter.setDisplayFilter(new TorrentListAdapter.DisplayFilter(TorrentStateCode.STOPPED));
         else
             adapter.setDisplayFilter(new TorrentListAdapter.DisplayFilter());
     }
